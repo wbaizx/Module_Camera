@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion 30
@@ -53,7 +55,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.module_camera'
                 artifactId = 'camera'
-                version = '1.0.0'
+                version = '1.0.1'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
@@ -62,7 +64,7 @@ afterEvaluate {
 
                 groupId = 'com.module_camera'
                 artifactId = 'camera-debug'
-                version = '1.0.0'
+                version = '1.0.1'
             }
         }
     }
