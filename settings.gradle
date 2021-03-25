@@ -1,0 +1,3 @@
+include ':camera_opengl'
+include ':app'
+rootProject.name = "Module_Camera"
