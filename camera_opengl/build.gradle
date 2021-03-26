@@ -42,10 +42,9 @@ dependencies {
     implementation 'com.github.wbaizx.Module_Common:common:1.0.5'
 }
 
-//生成源码jar包task
-task sourcesJar(type: Jar) {
+task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    archiveClassifier.set("sources")
+    classifier 'sources'
 }
 
 afterEvaluate {
@@ -56,19 +55,26 @@ afterEvaluate {
                 // Applies the component for the release build variant.
                 from components.release
 
+                artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+                artifact generateSourcesJar
+
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.module_camera'
                 artifactId = 'camera'
-                version = '1.0.2'
+                version = '1.0.3'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
                 // Applies the component for the debug build variant.
                 from components.debug
 
+                artifact("$buildDir/outputs/aar/${project.getName()}-debug.aar")
+                artifact generateSourcesJar
+
                 groupId = 'com.module_camera'
                 artifactId = 'camera-debug'
-                version = '1.0.2'
+                version = '1.0.3'
+
             }
         }
     }
