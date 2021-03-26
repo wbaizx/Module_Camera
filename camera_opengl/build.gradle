@@ -1,7 +1,5 @@
-plugins {
-    id 'com.android.library'
-    id 'maven-publish'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 30
@@ -41,7 +39,13 @@ dependencies {
     //路由跳转(每个需要的Module中需分别添加处理器)
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
-    api 'com.github.wbaizx.Module_Common:common:1.0.5'
+    implementation 'com.github.wbaizx.Module_Common:common:1.0.5'
+}
+
+//生成源码jar包task
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
 }
 
 afterEvaluate {
@@ -55,7 +59,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.module_camera'
                 artifactId = 'camera'
-                version = '1.0.1'
+                version = '1.0.2'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
@@ -64,7 +68,7 @@ afterEvaluate {
 
                 groupId = 'com.module_camera'
                 artifactId = 'camera-debug'
-                version = '1.0.1'
+                version = '1.0.2'
             }
         }
     }

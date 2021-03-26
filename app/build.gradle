@@ -35,4 +35,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(path: ':camera_opengl')
+
+    implementation 'com.github.wbaizx.Module_Common:common:1.0.5'
 }
